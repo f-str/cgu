@@ -64,10 +64,7 @@ impl GitConfig {
                 current_section = section_name.clone();
 
                 // Create section entry in the git_config
-                git_config
-                    .sections
-                    .entry(section_name)
-                    .or_insert_with(HashMap::new);
+                git_config.sections.entry(section_name).or_default();
             } else {
                 // Parse key-value pair
                 if let Some((key, value)) = GitConfig::parse_key_value(trimmed_line) {
