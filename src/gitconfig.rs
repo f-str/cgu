@@ -61,7 +61,7 @@ impl GitConfig {
             if trimmed_line.starts_with('[') && trimmed_line.ends_with(']') {
                 // Extract section name
                 let section_name = trimmed_line[1..trimmed_line.len() - 1].to_owned();
-                current_section = section_name.clone();
+                current_section = section_name.clone_from(&section_name);
 
                 // Create section entry in the git_config
                 git_config.sections.entry(section_name).or_default();
